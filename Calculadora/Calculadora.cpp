@@ -93,6 +93,8 @@ int Calculadora::evaluarExpresion(char ope, int pri, int seg) {
 
 int Calculadora::realizarCalculo() {
 
+	//Método de validar
+
 	int primerOperando, segundoOperando;
 	std::string expresionPosfija = convertirNotacion();
 
@@ -118,3 +120,33 @@ int Calculadora::realizarCalculo() {
 
 	return pila.peek();
 }
+
+void Calculadora::setExpresion(std::string expresionInfija) {
+
+	this->expresionInfija = expresionInfija;
+
+}
+
+std::string Calculadora::getExpresion() {
+
+	return expresionInfija;
+
+}
+
+void Calculadora::agregarCaracter(char car) {
+
+	expresionInfija.push_back(car);
+
+}
+
+void Calculadora::borrarCaracter() {
+
+	expresionInfija.pop_back();
+
+}
+
+void Calculadora::borrarExpresion() {
+
+	expresionInfija.clear();
+}
+

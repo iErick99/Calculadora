@@ -17,5 +17,10 @@ public:
 	std::string convertirNotacion();
 	int evaluarExpresion(char,int,int);
 	int realizarCalculo();
+	void setExpresion(std::string);
+	std::string getExpresion();
+	void agregarCaracter(char);
+	void borrarCaracter();
+	void borrarExpresion();
 };
 
