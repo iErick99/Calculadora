@@ -1,16 +1,21 @@
 #pragma once
+#include <sstream>
 #include <string>
+#include "Pila.h"
 
 class Calculadora {
 
-public:
+private:
+	std::string expresionInfija;
+	Pila<int> pila;
 
+public:
 	Calculadora();
 	~Calculadora();
-	bool validaParentesis(std::string);
-	std::istream& capturarExpresion(std::istream&, std::string&);
-	std::string convertirNotacion(const std::string&);
-	void removerEspacios(std::string&);
+	bool validarExpresion();
 	int precedencia(char);
+	std::string convertirNotacion();
+	int evaluarExpresion(char,int,int);
+	int realizarCalculo();
 };
 

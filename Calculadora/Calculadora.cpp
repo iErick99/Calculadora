@@ -5,105 +5,116 @@
 #include <stdio.h>
 #include <ctype.h>
 
-Calculadora::Calculadora() { }
+Calculadora::Calculadora() {}
 
-Calculadora::~Calculadora() { }
+Calculadora::~Calculadora() {}
 
-bool Calculadora::validaParentesis(std::string expresion) {
+bool Calculadora::validarExpresion() {
 
 	std::stack<char> pila;
-	bool esValida = true;
-	char c, aux;
 
-	for (std::string::size_type i = 0; i < expresion.size(); ++i) {
-
-		c = expresion[i];
-
-		if (c == '(' || c == '[' || c == '{')
-			pila.push(c);
-		else if (c == ')' || c == ']' || c == '}')
+	for (char cha : expresionInfija) {
+		if (cha == '(')
+			pila.push(cha);
+		else if (cha == ')') {
 			if (pila.empty())
-				esValida = false;
-			else {
-				aux = pila.top();
-				pila.pop();
-				if ((c == '(' && aux != ')') || (c == '[' && aux != ']') || (c == '{' && aux != '}'))
-					esValida = false;
-			}
-	}
+				return 0;
 
-	if (!pila.empty())
-		return false;
-
-	return esValida;
-
-}
-
-std::istream& Calculadora::capturarExpresion(std::istream& entrada, std::string& exp){
-
-	std::cout << "Digite una expresion interfija y presione <ENTER>: " << std::endl;
-
-	if (entrada) {
-		exp.clear();
-		std::getline(entrada, exp);
-
-		entrada.clear();
-	}
-	return entrada;
-
-}
-
-std::string Calculadora::convertirNotacion(const std::string& exp){
-
-	char c;
-	int pos = 0;
-	std::string temp;
-	std::stack<char> pila;
-
-	for (std::string::size_type i = 0; i < exp.size(); ++i) {
-		if (isdigit(exp[i]))
-			temp.append(1, exp[i]);
-		else if (exp[i] == '(')
-			pila.push(exp[i]);
-		else if (exp[i] == ')')
-			while ((c = pila.top()) != '(') {
-				pila.pop();
-				temp.append(1, c);
-			}
-		else {
-			while (!pila.empty() && precedencia(pila.top()) >= precedencia(exp[i])) {
-				temp.append(1, pila.top());
-				pila.pop();
-			}
-			pila.push(exp[i]);
+			pila.pop();
 		}
 	}
-	while (!pila.empty()) {
-		temp.append(1, pila.top());
-		pila.pop();
-	}
-	return temp;
 
+	return pila.empty();
 }
 
-void Calculadora::removerEspacios(std::string& exp){
+int Calculadora::precedencia(char ope) {
 
-	for (std::string::size_type i = 0; i < exp.size(); ++i)
-		if (isspace(exp[i])) {
-			exp.erase(i, 1);
-			--i;
-		}
-
-}
-
-int Calculadora::precedencia(char c){
-
-	if (c == '(')
-		return 1;
-	if (c == '+' || c == '-')
-		return 2;
-	if (c == '*' || c == '/')
+	if (ope == '^')
 		return 3;
-	return -1;
+	else if (ope == '*' || ope == '/')
+		return 2;
+	else if (ope == '+' || ope == '-')
+		return 1;
 
+	return 0;
+}
+
+std::string Calculadora::convertirNotacion() {
+
+	Pila<std::string> pilaDeOperadores;
+	std::stringstream expresionPostfija;
+
+	for (int i = 0; i < expresionInfija.size(); i++)
+		if (isdigit(expresionInfija[i])) {
+			int contadorDeDigitos = 0;
+
+			do
+				expresionPostfija << expresionInfija[i + contadorDeDigitos++];
+			while (isdigit(expresionInfija[i + contadorDeDigitos]));
+
+			i += contadorDeDigitos - 1;
+
+			if (pilaDeOperadores.estaVacia() || precedencia(expresionInfija[i + 1]) > precedencia(pilaDeOperadores.peek()[0]))
+				expresionPostfija << " ";
+		}
+		else if (expresionInfija[i] == '(')
+			pilaDeOperadores.push("(");
+		else if (expresionInfija[i] == ')') {
+			while (pilaDeOperadores.peek() != "(")
+				expresionPostfija << pilaDeOperadores.pop();
+
+			pilaDeOperadores.pop();
+		}
+		else {
+			while (!pilaDeOperadores.estaVacia() && precedencia(expresionInfija[i]) <= precedencia(pilaDeOperadores.peek()[0]))
+				expresionPostfija << pilaDeOperadores.pop();
+
+			pilaDeOperadores.push(std::string(1, expresionInfija[i]));
+		}
+
+	while (!pilaDeOperadores.estaVacia())
+		expresionPostfija << pilaDeOperadores.pop();
+
+	return expresionPostfija.str();
+}
+
+int Calculadora::evaluarExpresion(char ope, int pri, int seg) {
+
+	switch (ope) {
+
+	case '+': return pri + seg;
+	case '-': return pri - seg;
+	case '*': return pri * seg;
+	case '/': return pri / seg;
+	
+	default: return static_cast<int>(pow(pri, seg));
+	}
+}
+
+int Calculadora::realizarCalculo() {
+
+	int primerOperando, segundoOperando;
+	std::string expresionPosfija = convertirNotacion();
+
+	for (int i = 0; i < expresionPosfija.size(); i++)
+		if (isdigit(expresionPosfija[i])) {
+			std::string numero;
+
+			do
+				numero.push_back(expresionPosfija[i++]);
+			while (isdigit(expresionPosfija[i]));
+
+			if (!isspace(expresionPosfija[i]))
+				i--;
+
+			pila.push(stoi(numero));
+		}
+		else {
+			segundoOperando = pila.pop();
+			primerOperando = pila.pop();
+
+			pila.push(evaluarExpresion(expresionPosfija[i], primerOperando, segundoOperando));
+		}
+
+	return pila.peek();
 }
