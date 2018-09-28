@@ -1,0 +1,115 @@
+﻿  Calculadora.cpp
+c:\users\loler\source\repos\sfml\sfml\calculadora.cpp(19): warning C4018: '<': no coinciden signed/unsigned
+c:\users\loler\source\repos\sfml\sfml\calculadora.cpp(41): warning C4018: '<': no coinciden signed/unsigned
+c:\users\loler\source\repos\sfml\sfml\calculadora.cpp(94): warning C4018: '<': no coinciden signed/unsigned
+c:\users\loler\source\repos\sfml\sfml\calculadora.cpp(163): warning C4018: '<': no coinciden signed/unsigned
+  Controller.cpp
+  Model.cpp
+  Source.cpp
+  View.cpp
+c:\users\loler\source\repos\sfml\sfml\view.cpp(22): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(25): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(28): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(31): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(36): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(39): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(42): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(45): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(48): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(51): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(54): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(57): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(60): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(63): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(66): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(69): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(72): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(75): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(78): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(81): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\sfml\sfml\view.cpp(289): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\loler\source\repos\sfml\sfml\view.cpp(296): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\loler\source\repos\sfml\sfml\view.cpp(303): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\loler\source\repos\sfml\sfml\view.cpp(310): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+  Generando código...
+  SFML.vcxproj -> C:\Users\LoLER\source\repos\SFML\Debug\SFML.exe
