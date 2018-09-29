@@ -1,9 +1,22 @@
+// View.h
+// Declaración de la clase View
+
 #pragma once
 #include "Observer.h"
 #include "SFML/Graphics.hpp"
 
+
+//Declaración de la clase model y view
+
+
 class Controller;
 class Model;
+
+// Definición de la clase View y sus métodos
+// Esta misma hereda de la clase "Observer"
+// e implmenta el método "update" de esta misma
+// Está clase será utilizada para el ensamblaje
+// del patrón MVC(Model View Controller)
 
 class View : public Observer {
 
@@ -74,10 +87,14 @@ private:
 	sf::Sprite sprite18;
 	sf::Sprite sprite19;
 	sf::Sprite sprite20;
-	sf::Font font;
-	sf::Text text;
-	sf::Text text1;
-	sf::Text text2;
+	sf::Font font; 
+	sf::Font font1;
+	sf::Text texto_notacionInfija;
+	sf::Text texto_resultado;
+	sf::Text texto_notacionPostfija;
+	sf::Text notacionInfija;
+	sf::Text resultado;
+	sf::Text notacionPostfija;
 	sf::Texture texture1;
 
 public:

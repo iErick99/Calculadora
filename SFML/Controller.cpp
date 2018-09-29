@@ -2,10 +2,14 @@
 #include "Model.h"
 #include "View.h"
 
+//Constructor preterminado
+Controller::Controller() {}
 
-Controller::Controller() {
-}
-
+//Constructor con parámetros
+//Recibe 2 parámetros, el primero; es un objeto tipo
+//Model el cual será asignado como el model de clase,
+//el segundo parámetro; es un objeto tipo View el cuál
+//será asignado el view de la clase
 Controller::Controller(Model* mod, View* vie) {
 
 	model = mod;
@@ -13,24 +17,29 @@ Controller::Controller(Model* mod, View* vie) {
 
 }
 
+//Destructor
+Controller::~Controller() {}
 
-Controller::~Controller() {
+//Recibe por parámetro un carácter, el cúal 
+//es enviado por parámetro al método del model
+//llamado agregarCaracter
+void Controller::agregarCaracter(char car) {
+
+	model->agregarCaracter(car);
 }
 
-void Controller::agregaCaracter(char car) {
+//Llama al método borrarCaracter del model asignado a la clase
 
-	model->getCalculadora()->agregarCaracter(car);
+void Controller::borrarCaracter() {
 
-}
-
-void Controller::borraCaracter() {
-
-	model->getCalculadora()->borrarCaracter();
+	model->borrarCaracter();
 
 }
 
-void Controller::borraExpresion() {
 
-	model->getCalculadora()->borrarExpresion();
+//Llama al método reiniciar del model asignado a la clase
+void Controller::borrarExpresion() {
+
+	model->reiniciarCalculadora();
 
 }

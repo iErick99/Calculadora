@@ -1,11 +1,16 @@
+// Pila.h
+// Declaración de la clase Pila
+
 #pragma once
+
+// Definición de la clase Observer y sus métodos
+// Esta clase formará parte del patrón "Observer"
 
 class Observer {
 
-	public:
+public:
    
-		Observer() {}
-
-		virtual void update() = 0;
+	Observer();
+	virtual void update() = 0;
    
 };

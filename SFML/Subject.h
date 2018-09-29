@@ -1,44 +1,22 @@
+// Subject.h
+// Declaración de la clase Subject
+
 #pragma once
+
 #include "lista.h"
-//#include "Nodo.h"
+
+// Definición de la clase Subject y sus métodos
+// Esta clase formará parte del patrón "Observer"
 
 class Subject {
-	
-	private:
-   
+
+private:
+
 	Lista* observers = new Lista();
-	int state;
 
-	public:
-	
-	int getState() {return state;}
+public:
 
-	void setState(int state) {
-	   
-		this->state = state;
-		notifyAllObservers();
-	  
-	}
+	void attach(Observer* observer);
+	void notifyAllObservers();
 
-	void attach(Observer* observer){
-	   
-		observers->insertarElemento(observer);
-	  
-	}
-
-	void notifyAllObservers(){
-	   
-		Nodo* tmp;
-
-		tmp = observers->getInicio();
-
-		while (tmp != nullptr) {
-
-			tmp->getInfo()->update();
-
-			tmp = tmp->getSiguiente();
-
-		}
-      
-	} 	
 };

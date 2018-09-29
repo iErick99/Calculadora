@@ -2,13 +2,9 @@
 #include <iostream>
 #include <sstream>
 
-Calculadora::Calculadora() {}
+Calculadora::Calculadora() {
 
-Calculadora::Calculadora(std::string inf) {
-
-	this->expresionInfija = inf;
-
-	normalizarExpresion();
+	pila.push(0);
 }
 
 Calculadora::~Calculadora() {}
@@ -18,7 +14,9 @@ void Calculadora::normalizarExpresion() {
 
 	for (int i = 1; i < expresionInfija.size(); i++)
 		if (expresionInfija[i] == '+') {
-			if (expresionInfija[i - 1] == '-')
+			if (expresionInfija[i - 1] == '+')
+				expresionInfija.pop_back();
+			else if (expresionInfija[i - 1] == '-')
 				expresionInfija.pop_back();
 		}
 		else if (expresionInfija[i] == '-')
@@ -32,8 +30,6 @@ void Calculadora::normalizarExpresion() {
 }
 
 void Calculadora::validarExpresion() {
-
-	normalizarExpresion();
 
 	Pila<char> pilaDeParentesis;
 	int indicadorDeElementos = 0; // Si es mayor o igual a 1 la expresion es valida
@@ -86,21 +82,21 @@ int Calculadora::precedencia(char ope) {
 	return 0;
 }
 
-std::string Calculadora::crearNotacionPostfija() {
+void Calculadora::crearNotacionPostfija() {
 
 	Pila<std::string> pilaDeOperadores;
-	std::stringstream expresionPostfija;
+	std::stringstream expresionPostFijaAux;
 
 	for (int i = 0; i < expresionInfija.size(); i++)
 		if (isdigit(expresionInfija[i])) {
 			int contadorDeDigitos = 0;
 
 			do
-				expresionPostfija << expresionInfija[i + contadorDeDigitos++];
+				expresionPostFijaAux << expresionInfija[i + contadorDeDigitos++];
 			while (isdigit(expresionInfija[i + contadorDeDigitos]));
 
 			if (!pilaDeOperadores.estaVacia() && pilaDeOperadores.peek() == "(-") {
-				expresionPostfija << ")";
+				expresionPostFijaAux << ")";
 
 				pilaDeOperadores.pop();
 				contadorDeDigitos++;
@@ -109,34 +105,34 @@ std::string Calculadora::crearNotacionPostfija() {
 			i += contadorDeDigitos - 1;
 
 			if (pilaDeOperadores.estaVacia() || precedencia(expresionInfija[i + 1]) > precedencia(pilaDeOperadores.peek()[0]))
-				expresionPostfija << " ";
+				expresionPostFijaAux << " ";
 		}
 		else if (expresionInfija[i] == '(') {
-			if (isdigit(expresionInfija[i + 1]))
+			if (isdigit(expresionInfija[i + 1]) || expresionInfija[i + 1] == '(')
 				pilaDeOperadores.push("(");
 			else if (expresionInfija[++i] == '-') {
-				expresionPostfija << "(-";
+				expresionPostFijaAux << "(-";
 				pilaDeOperadores.push("(-");
 			}
 		}
 		else if (expresionInfija[i] == ')') {
 			while (pilaDeOperadores.peek() != "(")
-				expresionPostfija << pilaDeOperadores.pop();
+				expresionPostFijaAux << pilaDeOperadores.pop();
 
 			pilaDeOperadores.pop();
 		}
 		else {
 
 			while (!pilaDeOperadores.estaVacia() && precedencia(expresionInfija[i]) <= precedencia(pilaDeOperadores.peek()[0]))
-				expresionPostfija << pilaDeOperadores.pop();
+				expresionPostFijaAux << pilaDeOperadores.pop();
 
 			pilaDeOperadores.push(std::string(1, expresionInfija[i]));
 		}
 
 	while (!pilaDeOperadores.estaVacia())
-		expresionPostfija << pilaDeOperadores.pop();
+		expresionPostFijaAux << pilaDeOperadores.pop();
 
-	return expresionPostfija.str();
+	expresionPostfija = expresionPostFijaAux.str();
 }
 
 int Calculadora::evaluarExpresion(char ope, int pri, int seg) {
@@ -154,10 +150,13 @@ int Calculadora::evaluarExpresion(char ope, int pri, int seg) {
 
 int Calculadora::realizarCalculo() {
 
+	if (expresionInfija.empty())
+		return pila.peek();
+
 	validarExpresion();
+	crearNotacionPostfija();
 
 	int primerOperando, segundoOperando;
-	std::string expresionPostfija = crearNotacionPostfija();
 	int multiplicadorDeNumeroNegativo;
 
 	for (int i = 0; i < expresionPostfija.size(); i++)
@@ -192,7 +191,7 @@ int Calculadora::realizarCalculo() {
 			pila.push(evaluarExpresion(expresionPostfija[i], primerOperando, segundoOperando));
 		}
 
-	return pila.pop();
+	return pila.peek();
 }
 
 std::string Calculadora::getExpresionInfija() {
@@ -200,29 +199,33 @@ std::string Calculadora::getExpresionInfija() {
 	return expresionInfija;
 }
 
-void Calculadora::setExpresion(std::string expresionInfija) {
+std::string Calculadora::getExpresionPostfija() {
 
-	this->expresionInfija = expresionInfija;
-
+	return expresionPostfija;
 }
 
 void Calculadora::agregarCaracter(char car) {
 
-	if (expresionInfija.size() < 24)
+	expresionInfija.push_back(car);
 
-		expresionInfija.push_back(car);
-
+	normalizarExpresion();
 }
 
 void Calculadora::borrarCaracter() {
 
-	if(expresionInfija.size() > 0)
-
+	if (!expresionInfija.empty()) {
 		expresionInfija.pop_back();
 
+		if (expresionInfija.empty())
+			reiniciar();
+	}
 }
 
-void Calculadora::borrarExpresion() {
+void Calculadora::reiniciar() {
 
 	expresionInfija.clear();
+	expresionPostfija.clear();
+
+	pila.vaciar();
+	pila.push(0);
 }

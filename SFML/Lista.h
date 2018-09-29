@@ -8,17 +8,19 @@
 // Note que el puntero al primer nodo de la lista
 // se mantiene oculto al usuario (privado)
 class Lista {
-	public:
-		Lista();
-		//~Lista();
-		void insertarElemento(Observer* item);
-		Nodo* getInicio();
-		/*int borrarElemento(int item);
-		int buscarElemento(int item);
-		void mostrarLista();
-		void borrarLista();
-		bool listaVacia();*/
-	private:
-		int tam;
-		Nodo* inicio;
+private:
+
+	int tam;
+	Nodo* inicio;
+
+public:
+
+	Lista();
+	~Lista();
+	void insertarElemento(Observer*);
+	Nodo* getInicio();
+	int borrarElemento(Observer*);
+	void borrarLista();
+	bool listaVacia();
+
 };

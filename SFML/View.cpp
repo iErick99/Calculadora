@@ -12,110 +12,87 @@ void View::start() {
 
 	sf::RenderWindow window(sf::VideoMode(490, 500), "Calculadora");
 
+	sf::Image i;
+
+	i.loadFromFile("icons8-calculator-50.png");
+
+	const sf::Uint8* pByteBuffer = i.getPixelsPtr();
+
+	window.setIcon(50, 50, pByteBuffer);
+
 	while (window.isOpen()) {
 
 		sf::Event event;
 		while (window.pollEvent(event)) {
 
-			if ((event.type == sf::Event::MouseButtonPressed || event.type == sf::Event::KeyPressed /*|| event.type == sf::Event::MouseEntered*/)) {
+			if ((event.type == sf::Event::MouseButtonPressed || event.type == sf::Event::KeyPressed)) {
 
-			if (sprite1.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num1 || event.key.code == sf::Keyboard::Numpad1))
-				controller->agregaCaracter('1');
-			else
-			if (sprite2.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num2 || event.key.code == sf::Keyboard::Numpad2))
-				controller->agregaCaracter('2');
-			else	
-			if (sprite3.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num3 || event.key.code == sf::Keyboard::Numpad3))
-				controller->agregaCaracter('3');
-			else
-			if (sprite4.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::Return) {
-				controller->agregaCaracter('(');
-				controller->agregaCaracter('-');
+				if (sprite1.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num1 || event.key.code == sf::Keyboard::Numpad1))
+					controller->agregarCaracter('1');
+				else
+					if (sprite2.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num2 || event.key.code == sf::Keyboard::Numpad2))
+						controller->agregarCaracter('2');
+					else
+						if (sprite3.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num3 || event.key.code == sf::Keyboard::Numpad3))
+							controller->agregarCaracter('3');
+						else
+							if (sprite4.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
+								controller->agregarCaracter('(');
+								controller->agregarCaracter('-');
+							}
+							else
+								if (sprite5.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num4 || event.key.code == sf::Keyboard::Numpad4))
+									controller->agregarCaracter('4');
+								else
+									if (sprite6.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num5 || event.key.code == sf::Keyboard::Numpad5))
+										controller->agregarCaracter('5');
+									else
+										if (sprite7.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num6 || event.key.code == sf::Keyboard::Numpad6))
+											controller->agregarCaracter('6');
+										else
+											if (sprite8.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::Add)
+												controller->agregarCaracter('+');
+											else
+												if (sprite9.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num7 || event.key.code == sf::Keyboard::Numpad7))
+													controller->agregarCaracter('7');
+												else
+													if (sprite10.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num8 || event.key.code == sf::Keyboard::Numpad8))
+														controller->agregarCaracter('8');
+													else
+														if (sprite11.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num9 || event.key.code == sf::Keyboard::Numpad9))
+															controller->agregarCaracter('9');
+														else
+															if (sprite12.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::Subtract)
+																controller->agregarCaracter('-');
+															else
+																if (sprite13.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num0 || event.key.code == sf::Keyboard::Numpad0))
+																	controller->agregarCaracter('0');
+																else
+																	if (sprite14.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::Divide)
+																		controller->agregarCaracter('/');
+																	else
+																		if (sprite15.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::Multiply)
+																			controller->agregarCaracter('*');
+																		else
+																			if ((sprite16.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::BackSpace))
+																				controller->borrarCaracter();
+																			else
+																				if (sprite17.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+																					controller->agregarCaracter('^');
+																				else
+																					if (sprite18.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::LBracket)
+																						controller->agregarCaracter('(');
+																					else
+																						if (sprite19.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::RBracket)
+																							controller->agregarCaracter(')');
+																						else
+																							if (sprite20.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+																								controller->borrarExpresion();
 			}
-			else
-			if (sprite5.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num4 || event.key.code == sf::Keyboard::Numpad4))
-				controller->agregaCaracter('4');
-			else
-			if (sprite6.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num5 || event.key.code == sf::Keyboard::Numpad5))
-				controller->agregaCaracter('5');
-			else
-			if (sprite7.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num6 || event.key.code == sf::Keyboard::Numpad6))
-				controller->agregaCaracter('6');
-			else
-			if (sprite8.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::Add)
-				controller->agregaCaracter('+');
-			else
-			if (sprite9.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num7 || event.key.code == sf::Keyboard::Numpad7))
-				controller->agregaCaracter('7');
-			else
-			if (sprite10.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num8 || event.key.code == sf::Keyboard::Numpad8))
-				controller->agregaCaracter('8');
-			else
-			if (sprite11.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num9 || event.key.code == sf::Keyboard::Numpad9))
-				controller->agregaCaracter('9');
-			else
-			if (sprite12.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::Subtract)
-				controller->agregaCaracter('-');
-			else
-			if (sprite13.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || (event.key.code == sf::Keyboard::Num0 || event.key.code == sf::Keyboard::Numpad0))
-				controller->agregaCaracter('0');
-			else
-			if (sprite14.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::Divide)
-				controller->agregaCaracter('/');
-			else
-			if (sprite15.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::Multiply)
-				controller->agregaCaracter('*');
-			else
-			if ((sprite16.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::BackSpace) && !model->getCalculadora()->getExpresionInfija().empty())
-				controller->borraCaracter();
-			else
-			if (sprite17.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
-				controller->agregaCaracter('^');
-			else
-			if (sprite18.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::LBracket)
-				controller->agregaCaracter('(');
-			else
-			if (sprite19.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y) || event.key.code == sf::Keyboard::RBracket)
-				controller->agregaCaracter(')');
-			else
-			if (sprite20.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
-				controller->borraExpresion();
-
-				std::string expresion = model->getCalculadora()->getExpresionInfija();
-
-				text.setString(expresion);
-
-				if (!model->getCalculadora()->getExpresionInfija().empty()) {
-
-					try {
-
-						text1.setString(std::to_string(model->getCalculadora()->realizarCalculo()));
-						text2.setString(model->getCalculadora()->crearNotacionPostfija());
-
-					}
-					catch (std::string ex) {
-
-						text2.setString(ex);
-
-					}
-
-				}
-				else {
-
-					text1.setString("");
-
-					text2.setString("");
-
-				}
-
-			}
-
-			if (event.type == sf::Event::Closed)
-				window.close();
-
-
-
 		}
+
+		if (event.type == sf::Event::Closed)
+			window.close();
 
 		window.clear();
 		window.draw(sprite);
@@ -139,9 +116,12 @@ void View::start() {
 		window.draw(sprite18);
 		window.draw(sprite19);
 		window.draw(sprite20);
-		window.draw(text);
-		window.draw(text1);
-		window.draw(text2);
+		window.draw(notacionInfija);
+		window.draw(resultado);
+		window.draw(notacionPostfija); 
+		window.draw(texto_notacionInfija);
+		window.draw(texto_resultado);
+		window.draw(texto_notacionPostfija);
 		window.draw(numero1);
 		window.draw(numero2);
 		window.draw(numero3);
@@ -164,7 +144,6 @@ void View::start() {
 		window.draw(trash);
 		window.display();
 	}
-
 }
 
 View::~View() {}
@@ -173,10 +152,9 @@ void View::setModel(Model* model) {
 
 	this->model = model;
 	model->attach(this);
-
 }
 
-void View::setController(Controller* controller) {	this->controller = controller;	}
+void View::setController(Controller* controller) { this->controller = controller; }
 
 void View::initComponents() {
 
@@ -205,7 +183,7 @@ void View::initComponents() {
 	numero3.setPosition(275, 440);
 
 	if (!icon_plus_minus.loadFromFile("icons8-plus-and-minus-50.png"))
-		return ;
+		return;
 
 	plus_minus.setTexture(icon_plus_minus);
 	plus_minus.setPosition(385, 440);
@@ -313,7 +291,7 @@ void View::initComponents() {
 	if (!texture1.loadFromFile("fondo_boton.jpg"))
 		return;
 
-	
+
 	sprite1.setTexture(texture1);
 	sprite1.setTextureRect(sf::IntRect(0, 0, 100, 30));
 	sprite1.setPosition(30, 450);
@@ -396,31 +374,67 @@ void View::initComponents() {
 
 	font.loadFromFile("OpenSans-Light.ttf");
 
-	text.setString("");
-	text.setFont(font);
-	text.setPosition(30, 30);
-	text.setCharacterSize(30);
-	text.setStyle(sf::Text::Bold);
-	text.setFillColor(sf::Color::Red);
+	notacionInfija.setString("");
+	notacionInfija.setFont(font);
+	notacionInfija.setPosition(30, 50);
+	notacionInfija.setCharacterSize(30);
+	notacionInfija.setStyle(sf::Text::Bold);
+	notacionInfija.setFillColor(sf::Color::Red);
 
-	text1.setString("");
-	text1.setFont(font);
-	text1.setPosition(30, 130);
-	text1.setCharacterSize(30);
-	text1.setStyle(sf::Text::Bold);
-	text1.setFillColor(sf::Color::Red);
+	resultado.setString("0");
+	resultado.setFont(font);
+	resultado.setPosition(30, 140);
+	resultado.setCharacterSize(30);
+	resultado.setStyle(sf::Text::Bold);
+	resultado.setFillColor(sf::Color::Red);
 
-	text2.setString("");
-	text2.setFont(font);
-	text2.setPosition(30, 230);
-	text2.setCharacterSize(30);
-	text2.setStyle(sf::Text::Bold);
-	text2.setFillColor(sf::Color::Red);
+	notacionPostfija.setString("");
+	notacionPostfija.setFont(font);
+	notacionPostfija.setPosition(30, 230);
+	notacionPostfija.setCharacterSize(30);
+	notacionPostfija.setStyle(sf::Text::Bold);
+	notacionPostfija.setFillColor(sf::Color::Red);
+
+	font1.loadFromFile("OpenSans-SemiboldItalic.ttf");
+
+	texto_notacionInfija.setString("Expresión: ");
+	texto_notacionInfija.setFont(font1);
+	texto_notacionInfija.setPosition(30, 20);
+	texto_notacionInfija.setCharacterSize(20);
+	texto_notacionInfija.setStyle(sf::Text::Bold);
+	texto_notacionInfija.setFillColor(sf::Color::White);
+
+	texto_resultado.setString("Resultado: ");
+	texto_resultado.setFont(font1);
+	texto_resultado.setPosition(30, 110);
+	texto_resultado.setCharacterSize(20);
+	texto_resultado.setStyle(sf::Text::Bold);
+	texto_resultado.setFillColor(sf::Color::White);
+
+	texto_notacionPostfija.setString("Post-fija: ");
+	texto_notacionPostfija.setFont(font1);
+	texto_notacionPostfija.setPosition(30, 200);
+	texto_notacionPostfija.setCharacterSize(20);
+	texto_notacionPostfija.setStyle(sf::Text::Bold);
+	texto_notacionPostfija.setFillColor(sf::Color::White);
 
 }
 
 void View::update() {
-	
 
+	try {
 
+		notacionInfija.setString(model->getCalculadora()->getExpresionInfija());
+		model->realizarCalculo();
+
+		resultado.setString(std::to_string(model->resultado));
+		notacionPostfija.setString(model->getCalculadora()->getExpresionPostfija());
+
+	}
+	catch (std::string ex) {
+
+		resultado.setString("0");
+		notacionPostfija.setString(ex);
+
+	}
 }
