@@ -1,0 +1,106 @@
+﻿  View.cpp
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(47): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(50): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(53): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(56): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(59): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(62): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(68): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(71): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(74): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(77): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(80): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(83): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(86): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(89): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(92): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(95): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(98): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(101): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(294): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(301): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(308): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\loler\source\repos\calculadora\calculadora\view.cpp(315): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+  Calculadora.vcxproj -> C:\Users\LoLER\source\repos\Calculadora\Debug\Calculadora.exe
