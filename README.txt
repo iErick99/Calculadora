@@ -1,3 +1,7 @@
+**********IMPORTANTE************
+ES NECESARIO SEGUIR LOS PASOS INDICADOS EN LA DOCUMENTACIÓN
+PARA UN ÓPTIMO DESEMPEÑO DE LA APLICACIÓN
+********************************
 La documentación fue hecha utilizando Jupyter, para acceder a la misma
 se debe abrir el link a la siguiente página https://github.com/iErick99/Calculadora, 
 seguidamente dirigirse a la opción ¨Proyecto 1.ipynb" o bien acceder por medio de este
